@@ -35,7 +35,7 @@
         {% endfor %}
     </div>
     <div class="sidebar">
-        <span class="timer">3:00</span>
+        <span id="timer">3:00</span>
         <span class="remaining" id="remaining-ticker">-- words remaining</span>
         <select multiple class="word-history" type="listbox">
             <option>test</option>
@@ -47,7 +47,7 @@
 </div>
 <script type="text/javascript">
 window.onload = function() {
-    get_valid_words();
+    start_round();
 }
 </script>
 

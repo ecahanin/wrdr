@@ -95,7 +95,7 @@ ul {
 	display: none;
 }
 
-.timer {
+#timer {
 	display: block;
 	font-size: 1.8em;
 }

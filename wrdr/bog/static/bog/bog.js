@@ -11,7 +11,6 @@ function write_to_box(word) {
 				str += ">" + word;
 			}
 		//}
-		used.push(word);
 		str += "</option>";
 		listbox.innerHTML = str + listbox.innerHTML;
 	}
@@ -69,4 +68,45 @@ function get_valid_words(){
 	update_remaining();
 }
 
+function start_round() {
+	used=[];
+	get_valid_words();
+	startTimer(30);
+}
 
+function startTimer(duration) {
+    var start = Date.now();
+    var diff;
+    var minutes;
+    var seconds;
+    var display = document.getElementById("timer");
+    function timer() {
+        diff = duration - (((Date.now() - start) / 1000) | 0);
+        minutes = (diff / 60) | 0;
+        seconds = (diff % 60) | 0;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = minutes + ":" + seconds;
+        if (diff <= 0) {
+            start = Date.now() + 1000;
+        }
+        if (minutes == 0 && seconds == 0) {
+            clearInterval(intervalId);
+            end_round();
+        }
+    };
+    
+    timer();
+    var intervalId = setInterval(timer, 1000);
+}
+
+function end_round() {
+    active = false;
+    var missed = [];
+    for (i = 0; i < valid_words.length; i++){
+        if (used.indexOf(valid_words[i]) == -1) {
+            missed.push(valid_words[i]);
+            write_to_box(valid_words[i]);
+        }
+    }
+    
+}
