@@ -42,6 +42,7 @@ ul {
 	grid-column: 1;
 	max-height: 80vh;
 	overflow: scroll;
+	display: none; //pushing solutions as a html is a big kludge, should use api in future
 }
 
 .main-content {
@@ -103,4 +104,21 @@ ul {
 .remaining {
 	display: block;
 	font-size: 1.2em;
+}
+
+.missed {
+	background-color: lightcoral;
+}
+
+.word-history {
+	height: 80%;
+	min-width: 200px;
+	max-width: 80%;
+	margin: auto;
+	max-height: 50vh;
+	border: 2px solid lightgray;
+	list-style: none;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-size: 1.8em;
 }

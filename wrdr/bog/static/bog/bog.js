@@ -1,6 +1,6 @@
 function write_to_box(word) {
 	var listbox = document.getElementsByClassName("word-history")[0];
-	var str = "<option";
+	var str = "<li";
 	if (used.indexOf(word) == -1) {
 		//if (valid_words.indexOf(word) == -1){
 		//	str += ' class-"bad">' + word;
@@ -11,7 +11,7 @@ function write_to_box(word) {
 				str += ">" + word;
 			}
 		//}
-		str += "</option>";
+		str += "</li>";
 		listbox.innerHTML = str + listbox.innerHTML;
 	}
 }
@@ -71,7 +71,8 @@ function get_valid_words(){
 function start_round() {
 	used=[];
 	get_valid_words();
-	startTimer(30);
+	startTimer(120);
+	document.getElementById('entry').focus();
 }
 
 function startTimer(duration) {
@@ -100,7 +101,11 @@ function startTimer(duration) {
 }
 
 function end_round() {
-    active = false;
+	active = false;
+	//disable entry field
+	var input = document.getElementById("entry");
+	input.disabled=true;
+	input.value='';
     var missed = [];
     for (i = 0; i < valid_words.length; i++){
         if (used.indexOf(valid_words[i]) == -1) {
