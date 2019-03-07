@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'bog/main.css' %}">
+    <title>{% block title %}Wrdr{% endblock %}</title>
+    <script src="{% static 'bog/bog.js' %}"></script>
+</head>
+
+<body>
+<nav role="navigation">
+    <ul class="nav">
+        <li class="title">wrdr</li>
+        <li>New Board</li>
+        <li>Options</li>
+        <li>Stats</li>
+        <li>About</li>
+    </ul>
+</nav>
+
+<div class="main-content">
+    <div class="solutions">
+        <ul>
+            {% for word in words %}
+            <li class="valid">{{word}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="board">
+        {% for tile in tiles %}
+        <div class="tile">{{tile}}</div>
+        {% endfor %}
+    </div>
+    <div class="sidebar">
+        <span id="timer">3:00</span>
+        <span class="remaining" id="remaining-ticker">-- words remaining</span>
+        <ul class="word-history">
+            
+        </ul>
+    </div>
+    <div class="input">
+        <input type="text" id="entry" class="text-input" onkeydown="if (event.keyCode == 13){word_check()};">
+    </div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    start_round();
+}
+</script>
+
+</body>
+</html>
