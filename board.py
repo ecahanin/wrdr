@@ -109,6 +109,9 @@ class Board():
                 else:
                     deadpaths.append(path[:])
                     path.pop()
+        
+
+
 
                 
 def get_dicts():
